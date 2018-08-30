@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>epaCalc</title>
+  <link rel="" type="" href="">
+</head>
+<body>
+  <div id="header"> <!-- header open -->
+    <a id="header-title">EPA Calculator</a>
+  </div>  <!-- header closed -->
+  <div id="calk"> <!-- calk open -->
+    <form name="calculator">
+    <ul id="calk-list"> <!-- un ordered list -->
+      <li><a>EPA  ALLOWANCE:</a></li><p id="allowanceAnswer" value="0"></p>
+      <button id="b16" type="button" onclick="addHours(16)">+16 HOURS</button>
+      <button id="b24" type="button" onclick="addHours(24)">+24 HOURS</button>
+      <li><a>CHILDREN:</a></li><p id="childernAnswer" value="0">0</p>
+      <button id="bChild" type="button" onclick="addChild()">+1 CHILD</button>
+      <p id="childernAmtAnswer" value="0">0</p>
+      <li><a>HOUSING COST:</a></li><p id="hCost" value="0">0</p>
+      <button id="bH" type="button" onclick="addD('hc', 100)">100</button>
+      <button id="bT" type="button" onclick="addD('hc', 10)">10</button>
+      <button id="b1" type="button" onclick="addD('hc', 1)">1</button>
+      <li><a>TOTAL ALLOWANCE:</a></li><p id="totalAllowanceAnswer" value="0">0</p> <!-- dont forget to add this to reset -->
+      <li><a>WAGE:</a></li><p id="wageAmount" value="0">0</p>
+      <button id="bH" type="button" onclick="addD('wg', 100)">100</button>
+      <button id="bT" type="button" onclick="addD('wg', 10)">10</button>
+      <button id="b1" type="button" onclick="addD('wg', 1)">1</button>
+      <li><a>TOTAL -WAGE:</a></li><p id="tNwg" value="0">0</p>
+      <li><a>70%:</a></li><p id="pec" value="0">0</p>
+      <li><a>TOTAL INCOME:</a></li><p id="tIc" value="0">0</p>
+      <button id="bCalk" type="button" onclick="funcCalc()">CALCULATE</button>
+      <button id="bReset" type="button" onclick="Rst()">RESET</button>
+    </ul>
+  </form>
+  </div> <!-- calk closed -->
+          <!-- button functions -->
+  <script>
+window.onload = Rst();
+function addHours(hrs)
+{
+  var aa = document.getElementById("allowanceAnswer");
+  if (hrs == "16")
+  {
+    aa.value = 285;
+    aa.innerHTML = aa.value;
+    updateTotAl();
+    if(document.getElementById("tIc").innerHTML !="0")
+    {
+      document.getElementById("tIc").innerHTML = "Recalculate!"
+    }
+  }
+  else if (hrs == "24")
+  {
+    aa.value = 319;
+    aa.innerHTML = aa.value;
+    updateTotAl();
+  }
+  if(document.getElementById("tIc").innerHTML !="0")
+  {
+    document.getElementById("tIc").innerHTML = "Recalculate!"
+  }
+}
+
+function addChild()
+{
+  var chld = document.getElementById("childernAmtAnswer");
+  var chldAmt = document.getElementById("childernAnswer");
+
+  if (chld.innerHTML == 0)
+  {
+    chld.innerHTML = "1";
+    chldAmt.value = 22;
+    chldAmt.innerHTML = chldAmt.value;
+    updateTotAl();
+  }
+  else if (chld.innerHTML >= "1")
+  {
+    chld.innerHTML ++;
+    chldAmt.value += 64;
+    chldAmt.innerHTML = chldAmt.value;
+    updateTotAl();
+  }
+}
+
+function addD(loc, unit)
+{
+  if (loc == 'hc')
+  {
+    var hct = document.getElementById("hCost");
+  }
+  else if (loc == 'wg')
+  {
+    var hct = document.getElementById("wageAmount");
+  }
+  if (unit == 100)
+  {
+    if(hct.value == undefined)
+    {
+        hct.value = 100;
+        hct.innerHTML = hct.value;
+        updateTotAl();
+    }
+    else
+    {
+        hct.value += 100;
+        hct.innerHTML = hct.value;
+        updateTotAl();
+    }
+  }
+  else if (unit == 10)
+  {
+    if(hct.value == undefined)
+    {
+        hct.value = 10;
+        hct.innerHTML = hct.value;
+        updateTotAl();
+    }
+    else
+    {
+        hct.value += 10;
+        hct.innerHTML = hct.value;
+        updateTotAl();
+    }
+  }
+  else if (unit == 1)
+  {
+    if(hct.value == undefined)
+    {
+        hct.value = 1;
+        hct.innerHTML = hct.value;
+        updateTotAl();
+    }
+    else
+    {
+        hct.value ++;
+        hct.innerHTML = hct.value;
+        updateTotAl();
+    }
+  }
+}
+
+function Rst()
+{
+  var aA = document.getElementById("allowanceAnswer");
+  var cAa = document.getElementById("childernAmtAnswer");
+  var cA = document.getElementById("childernAnswer");
+  var hC = document.getElementById("hCost");
+  var tAa = document.getElementById("totalAllowanceAnswer");
+  var wA = document.getElementById("wageAmount");
+  var tNwG = document.getElementById("tNwg");
+  var pec = document.getElementById("pec");
+  var tIc = document.getElementById("tIc");
+  aA.value = 0;
+  cAa.value = 0;
+  cA.value = 0;
+  hC.value = 0;
+  tAa.value = 0;
+  wA.value = 0;
+  tNwG.value = 0;
+  pec.value = 0;
+  tIc.value = 0;
+  aA.innerHTML = aA.value;
+  cAa.innerHTML = cAa.value;
+  cA.innerHTML = cA.value;
+  hC.innerHTML = hC.value;
+  tAa.innerHTML = hC.value;
+  wA.innerHTML = wA.value;
+  tNwG.innerHTML = tNwG.value;
+  pec.innerHTML = pec.value;
+  tIc.innerHTML = tIc.value;
+  updateTotAl();
+}
+function updateTotAl()
+{
+  var aa = document.getElementById("allowanceAnswer").value;
+  var chldAmt = document.getElementById("childernAnswer").value;
+  var hct = document.getElementById("hCost").value;
+  var tAa = document.getElementById("totalAllowanceAnswer");
+  tAa.value = aa+chldAmt+hct;
+  tAa.innerHTML = tAa.value;
+}
+function funcCalc()
+{
+  var tAa = document.getElementById("totalAllowanceAnswer").value;
+  var wG = document.getElementById("wageAmount").value;
+  var tNwG = document.getElementById("tNwg");
+  var pec = document.getElementById("pec");
+  var tIc = document.getElementById("tIc");
+  tNwg.value = tAa-wG;
+  tNwg.innerHTML = tNwg.value;
+  pec.value = Math.round(70/100*tNwg.value);
+  pec.innerHTML = pec.value;
+  tIc.value = wG+pec.value;
+  tIc.innerHTML = tIc.value;
+}
+</script>
+</body>
+</html>
