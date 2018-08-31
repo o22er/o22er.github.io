@@ -2,38 +2,49 @@
 <html>
 <head>
   <title>epaCalc</title>
-  <link rel="" type="" href="">
+  <link rel="stylesheet" type="text/css" href="stylesEPA.css">
 </head>
 <body>
-  <div id="header"> <!-- header open -->
-    <a id="header-title">EPA Calculator</a>
-  </div>  <!-- header closed -->
-  <div id="calk"> <!-- calk open -->
-    <form name="calculator">
-    <ul id="calk-list"> <!-- un ordered list -->
-      <li><a>EPA  ALLOWANCE:</a></li><p id="allowanceAnswer" value="0"></p>
+  <form id="calk" class="center"> <!-- calk open -->
+    <div id="header"> <!-- header open -->
+      <a id="header-title">Unofficial IOM EPA Calculator</a>
+    </div>  <!-- header closed -->
+    <div id="allQuestions">
+      <a>EPA  ALLOWANCE:</a><br>
       <button id="b16" type="button" onclick="addHours(16)">+16 HOURS</button>
-      <button id="b24" type="button" onclick="addHours(24)">+24 HOURS</button>
-      <li><a>CHILDREN:</a></li><p id="childernAnswer" value="0">0</p>
-      <button id="bChild" type="button" onclick="addChild()">+1 CHILD</button>
-      <p id="childernAmtAnswer" value="0">0</p>
-      <li><a>HOUSING COST:</a></li><p id="hCost" value="0">0</p>
+      <button id="b24" type="button" onclick="addHours(24)">+24 HOURS</button><br>
+      <a>CHILDREN:</a><br>
+      <button id="bChild" type="button" onclick="addChild()">+1 CHILD</button><br>
+      <a>HOUSING COST:</a><br>
       <button id="bH" type="button" onclick="addD('hc', 100)">100</button>
       <button id="bT" type="button" onclick="addD('hc', 10)">10</button>
-      <button id="b1" type="button" onclick="addD('hc', 1)">1</button>
-      <li><a>TOTAL ALLOWANCE:</a></li><p id="totalAllowanceAnswer" value="0">0</p> <!-- dont forget to add this to reset -->
-      <li><a>WAGE:</a></li><p id="wageAmount" value="0">0</p>
+      <button id="b1" type="button" onclick="addD('hc', 1)">1</button><br>
+      <a>TOTAL ALLOWANCE:</a><br>
+      <a>WAGE:</a><br>
       <button id="bH" type="button" onclick="addD('wg', 100)">100</button>
       <button id="bT" type="button" onclick="addD('wg', 10)">10</button>
-      <button id="b1" type="button" onclick="addD('wg', 1)">1</button>
-      <li><a>TOTAL -WAGE:</a></li><p id="tNwg" value="0">0</p>
-      <li><a>70%:</a></li><p id="pec" value="0">0</p>
-      <li><a>TOTAL INCOME:</a></li><p id="tIc" value="0">0</p>
+      <button id="b1" type="button" onclick="addD('wg', 1)">1</button><br>
+      <a>TOTAL -WAGE:</a><br>
+      <a>70%:  </a><br>
+      <a>TOTAL INCOME:</a><br>
       <button id="bCalk" type="button" onclick="funcCalc()">CALCULATE</button>
       <button id="bReset" type="button" onclick="Rst()">RESET</button>
-    </ul>
-  </form>
-  </div> <!-- calk closed -->
+  </div>
+  <div id="allAnswers">
+    <a id="allowanceAnswer" value="0"></a><br>
+    <br>
+    <a id="childernAnswer" value="0">0</a><br>
+    <a id="childernAmtAnswer" value="0">0</a><br>
+    <a id="hCost" value="0">0</a><br>
+    <br>
+    <a id="totalAllowanceAnswer" value="0">0</a><br>
+    <a id="wageAmount" value="0">0</a><br>
+    <br>
+    <a id="tNwg" value="0">0</a><br>
+    <a id="pec" value="0">0</a><br>
+    <a id="tIc" value="0">0</a><br>
+  </div>
+</form> <!-- calk closed -->
           <!-- button functions -->
   <script>
 window.onload = Rst();
