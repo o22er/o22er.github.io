@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>title here</title>
+    <link rel="stylesheet" type="text/css" href="styles.css">
+  </head>
+  <body>
+    <div id="header">
+      <div class ="container">
+        <a id="header-title" href="theknee.html">The Knee</a>
+        <ul id="header-nav">
+        </ul>
+      </div>
+    </div>
+    
+  </body>
+</html>
